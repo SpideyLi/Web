@@ -1,0 +1,53 @@
+<html>
+<head>
+  <title>
+    Sign Up
+  </title>
+
+  Sign Up Here
+
+  <form name = "myForm" action="demo_form.asp" autocomplete = "on" onsubmit="return validateForm()">
+  First name: <br> <input type="text" placeholder = "Steven" name="fname" required><br>
+  Last name: <br><input type="text" placeholder = "Li" name="lname"><br>
+  Username: <br><input type='text' placeholder = "StevenLi17" name="uname"><br>
+  Address: <br><input type='text' placeholder = "North Pole" name="addy"><br>
+  Email: <br><input type='text' placeholder = "JohnDoe17@gmail.com" name="email"><br>
+  Phone #: <br><input type='text' placeholder = "1-800-000-0000" name="number"><br>
+  <input type="submit" value="Submit">
+
+
+  </form>
+  <script>
+  function validateForm() {
+    var x = document.forms["myForm"]["fname"].value;
+    if (x == null || x == "") {
+        alert("Form is not complete");
+        return false;
+      }
+    }
+  </script>
+
+   <!-- <script> -->
+     <!-- function doMath(){
+  //     var num1 = document.getElementById("firstNum").value;
+  //     //console.log(num1)
+  //     var num2 = document.getElementById("secondNum").value;
+  //     var dividend = num1/num2;
+  //     console.log(dividend);
+  //     document.getElementById("outputDiv").innerHTML = dividend;
+  //   } -->
+   <!-- </script> -->
+</head>
+<body>
+<style type="text/css">
+
+  body {
+      background-color:pink;
+    }
+</style>
+  <input id="firstNum">
+  <input id="secondNum">
+  <button onclick ="doMath()">Click Me to do some math!</button>
+  <div id="outputDiv"></div>
+</body>
+</html>

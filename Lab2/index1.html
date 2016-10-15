@@ -1,0 +1,241 @@
+<html>
+<head>
+	<title>FRIENDS quiz</title>
+	<style type="text/css">
+	h1 {
+	    color: white;
+	    text-align: center;
+	    margin:25px;
+	}
+	h2 {
+	    color: white;
+
+	    text-align: center;
+	}
+	p {
+	    color: white;
+	    text-align: center;
+	}
+	a{
+		color:blue;
+		padding-left: 25px;
+		padding-bottom: 20px;
+	}
+	button{
+	    border-radius: 1000px;
+	    margin: 4px;
+	    width: 70px;
+	    height: 30px;
+	}
+
+	.listbox{
+
+	    text-align: left;
+	    padding-left: 1000px;
+	    font-size: 33px;
+	    color:white;
+	    padding: 10px;
+	}
+	.box{
+	    width:50%;
+	    margin: 0 auto;
+	    padding-left: 10px;
+	    padding-top: 10px;
+	    padding-bottom: 10px;
+
+	    margin-top: 30px;
+	    border-radius: 25px;
+	    width: 600px;
+	    height: 250px;
+	    background-color: silver;
+	    border: solid 1px silver;
+	    box-shadow: 0px 3px 5px 1px silver;
+	    margin-bottom: 80px;
+	}
+	.box1{
+
+	    color:white;
+	    text-align: center;
+	    padding-bottom: 13px;
+	    margin-left: 325px;
+	    margin-top: 40px;
+	    margin-bottom:10px;
+	    border-radius: 25px;
+	    width: 150px;
+	    height: 80px;
+	    background-color: silver;
+	    border: solid 1px silver;
+	    box-shadow: 0px 3px 5px 1px silver;
+	}
+	#name{
+	    width: 20%;
+	    margin: 0 auto;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	#timeDisplay{
+	    padding-top: 20px;
+	    font-size: 25px;
+	}
+	#name{
+	    padding-left: 5px;
+	    padding-right: 5px;
+	    margin-left: 350px;
+	    height:30px;
+	    font-size:14pt;
+	}
+
+	</style>
+
+	<script type="text/javascript">
+		var names = ["chandler", "joey", "ross", "monica", "rachel", "phoebe"];
+		var names1 = ["chandler", "joey", "ross", "monica", "rachel", "phoebe"];
+		var lastnames = [];
+		var len = names.length;
+		for(var i=0;i<len;i++) {
+			lastnames.push((function(){var n = names[i].split(" "); return n[n.length - 1];})());
+		}
+		var namesint = {"chandler":"1. Chandler Bing", "joey":"2. Joey Tribbiani", "ross":"3.  Ross Geller", "monica":"4. Monica Geller", "rachel":"5. Rachel Green", "phoebe":"6. Phoebe Buffay"}
+		var lol, minutes, seconds, time =20, count=0;
+
+		console.log(11);
+
+		function addFunction(){
+			document.getElementById("button").disabled = true;
+			document.getElementById("name").disabled = false;
+			document.getElementById("button1").disabled = false;
+			document.getElementById("stop").disabled = false;
+
+			lol =setInterval(function(){
+
+				var n1 = document.getElementById('name').value;
+				var lower = n1.toLowerCase();
+				console.log(lower);
+				time--;
+				if(names.indexOf(lower)>=0){
+						console.log("yes");
+						var index = names.indexOf(lower);
+						document.getElementById('name').value="";
+						names.splice(index,1);
+						var s = namesint[lower];
+						console.log(s);
+						var myDiv = document.getElementById(lower);
+  							myDiv.innerHTML = s;
+  						count++;
+  						if(count ==6){
+  							clearInterval(lol);
+
+							alert("Game Over! You got 6/6 correct.");
+							document.getElementById("name").disabled = true;
+							document.getElementById("button").disabled = true;
+							document.getElementById("resume").disabled = true;
+							document.getElementById("stop").disabled = true;
+  						}
+
+			}
+			if(lastnames.indexOf(lower)>=0){
+						console.log("yes");
+						var index = lastnames.indexOf(lower);
+						document.getElementById('name').value="";
+						lastnames.splice(index,1);
+						var s = namesint[index];
+						console.log(s);
+						console.log(namesint[index]);
+						var myDiv = document.getElementById(namesint[index]);
+  							myDiv.innerHTML = s;
+  						count++;
+  						if(count ==6){
+  							clearInterval(lol);
+
+
+							document.getElementById("name").disabled = true;
+							document.getElementById("button").disabled = true;
+							document.getElementById("resume").disabled = true;
+							document.getElementById("stop").disabled = true;
+							alert("Game Over! You got 6/6 correct.");
+  						}
+
+			}
+				if(time==0){
+					clearInterval(lol);
+
+					alert("Game Over! You got " + count + "/6 correct.");
+					document.getElementById("name").disabled = true;
+					document.getElementById("button").disabled = true;
+					document.getElementById("resume").disabled = true;
+					document.getElementById("stop").disabled = true;
+				}
+
+					//display the new time
+
+				minutes = Math.floor(time / 60);
+				seconds = time - minutes * 60;
+				var timeDiv = document.getElementById('timeDisplay');
+
+				if(seconds<10)
+					{
+						timeDiv.innerHTML = "Time Left: " + minutes + ":0" + seconds;
+					}
+				else{
+					timeDiv.innerHTML = "Time Left: " + minutes + ":" + seconds;
+					}
+				}, 1000);
+
+
+		}
+		function restart(){
+			document.getElementById("resume").disabled = false;
+			document.getElementById("stop").disabled = false;
+			location.reload();
+		}
+		function stop(){
+			clearInterval(lol);
+			document.getElementById("resume").disabled = false;
+			document.getElementById("stop").disabled = true;
+			document.getElementById("name").disabled = true;
+
+
+
+		}
+		function resume(){
+			addFunction();
+			document.getElementById("name").disabled=false;
+			document.getElementById("timeDisplay").disabled=true;
+			document.getElementById("resume").disabled = true;
+		}
+	</script>
+
+</head>
+<body background="u.jpg">
+	<h1>Welcome to the FRIENDS Quiz !!!</h1>
+	<p>Can you name America's 6 favorite friends from Manhattan?</p>
+
+	<div class="box1">
+		<div id = 'timeDisplay'>Time Left: </div>
+	</div>
+	<br>
+<div id="textbox">
+	<input type="text" id="name" disabled = "true">
+	<button id = "button" onclick="addFunction()">Start</button>
+	<button id = "button1" onclick="restart()" disabled = "true">Restart</button>
+	<button id = "stop" onclick="stop()" disabled = "true">Pause</button disabled>
+	<button id = "resume" onclick="resume()" disabled="true">Resume</button>
+
+
+
+</div>
+
+<div class = "box">
+		<div class = "listbox">
+	<div id="chandler">1. </div>
+	<div id="joey">2. </div>
+	<div id="ross">3. </div>
+	<div id="monica">4. </div>
+	<div id="rachel">5. </div>
+	<div id="phoebe">6. </div>
+
+		</div>
+
+</div>
+</body>
+</html>
