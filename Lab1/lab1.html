@@ -1,0 +1,164 @@
+<html>
+<head>
+	<title>German Lux</title>
+	<link rel="stylesheet" href="../mdl/material.min.css">
+	<link rel="stylesheet" type="text/css" href="./form.css">
+	<script src="../mdl/material.min.js"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
+	<script type="text/javascript">
+		function validateEmail(){
+			var email = event.target.value;
+			var expected = /[A-Za-z]@[A-Za-z]+\.[A-Za-z]+/i;
+			if(!expected.test(email)){
+				
+			}
+		}
+    function reload(){
+      console.log("hello");
+      location.reload();
+    }
+		function validatePhone(){
+			var phone = event.target.value;
+			var expected = /[0-9][0-9][0-9]\-[0-9][0-9][0-9]\-[0-9][0-9][0-9][0-9]/;
+			if(!expected.test(phone)){
+				alert("bad phone:((");
+			}
+		}
+    function radioChange(which){
+      console.log(which);
+      if(which == "fulllist"){
+        document.myForm.master.size = document.myForm.master.options.length;
+        document.myForm.select.size = document.myForm.select.options.length;
+      }
+      else{
+        document.myForm.master.size="1";
+        document.myForm.select.size="1";
+      }
+    }
+    function dropDown(car){
+      for(var i = document.myForm.master.length-1; i>=0; i--){
+          document.myForm.master.options[i]=null;
+      }
+
+      if(car == "Audi")
+      {
+        document.myForm.master.options[0] = new Option('A3', 'A3', true, false);
+        document.myForm.master.options[1] = new Option('A4', 'A4', true, false);
+        document.myForm.master.options[2] = new Option('A6', 'back', true, false);
+        document.myForm.master.options[3] = new Option('A8', 'front', true, false);
+      }
+      if(car == "Mercedes")
+      {
+        document.myForm.master.options[0] = new Option('C Class', 'fb', true, false);
+        document.myForm.master.options[1] = new Option('E Class', 'ig', true, false);
+        document.myForm.master.options[2] = new Option('CLS AMG', 'twitter', true, false);
+        document.myForm.master.options[3] = new Option('S Class AMG', 'linkedin', true, false);
+      }
+      if(car == "BMW")
+      {
+        document.myForm.master.options[0] = new Option('3 Series', 'pm', true, false);
+        document.myForm.master.options[1] = new Option('5 Series', 'pmi', true, false);
+        document.myForm.master.options[2] = new Option('6 Series', 'do', true, false);
+        document.myForm.master.options[3] = new Option('7 Series', 'som', true, false);
+      }
+      
+
+    }
+
+	</script>
+</head>
+<body>
+
+<center>
+<h1><font color = "red">Li's Luxury Automobiles</h1>
+  <p>Browse and purchase our selection of the finest rides in town</p>
+  </center>
+<center>
+	<form name="myForm">
+		<br>
+		 
+		
+		<div class="mdl-textfield mdl-js-textfield" required>
+   			 <input class="mdl-textfield__input" type="text" id="sample1" pattern="[A-Za-z]+" name="FirstName" required >
+   			 <span class="mdl-textfield__error">Input is not in letters!</span>
+    		<label class="mdl-textfield__label" for="sample1">First Name</label>
+ 	 </div><br>
+ 	 <div class="mdl-textfield mdl-js-textfield">
+   			 <input class="mdl-textfield__input" type="text" id="sample1" pattern="[A-Za-z]+" name="LastName" required>
+   			 <span class="mdl-textfield__error">Input is not in letters!</span>
+    		<label class="mdl-textfield__label" for="sample1">Last Name</label>
+ 	 </div><br>
+
+ 	 <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2" maxlength="10" name="Phone" required>
+    <label class="mdl-textfield__label" for="sample2">Phone Number</label>
+    <span class="mdl-textfield__error">Input is not a number!</span>
+  </div><br>
+
+  <div class="mdl-textfield mdl-js-textfield">
+   			 <input class="mdl-textfield__input" type="text" id="sample1" pattern="[A-Za-z0-9]+@[A-Za-z]+\.[A-Za-z]+" onblur="validateEmail()" name="Email" required>
+   			 <span class="mdl-textfield__error">Input is not a valid email!</span>
+    		<label class="mdl-textfield__label" for="sample1">Email</label>
+ 	 </div>
+   <br><br>
+
+
+  
+	
+<div id="appd">
+<p>Select Your Make</p>
+<div id="multi">
+  <label class="mdl-radio mdl-js-radio" for="drop">
+  <input type="radio" name="drop" class="mdl-radio__button"  value="dropdown" onchange = "radioChange(value)" id="drop" checked>
+<span class="mdl-radio__label">Dropdown</span>
+  </label>
+
+  <label class="mdl-radio mdl-js-radio" for="list">
+  <input type="radio" name="drop" class="mdl-radio__button" value="fulllist" onchange = "radioChange(value)" id="list">
+  <span class="mdl-radio__label">Full list</span>
+</label>
+<br>
+<br>
+<select name="select" onchange="dropDown(this.value)">
+  <option value="Audi">Audi</option>
+  <option value="Mercedes">Mercedes</option>
+  <option value="BMW">BMW</option>
+  
+</select>
+
+<select name="master">
+  <option value="volvo">A3</option>
+  <option value="saab">A4</option>
+  <option value="mercedes">A6</option>
+  <option value="audi">A8</option>
+</select>
+<br>
+<br>
+</div>
+<br>
+
+</table> 
+  <br>
+
+  <br>
+<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect"  align="center">
+      Submit      
+      
+</button>
+<br>
+<br>
+</form>
+  <!-- List with avatar and controls -->
+<style>
+.demo-list-control {
+  width: 300px;
+}
+
+.demo-list-radio {
+  display: inline;
+}
+</style>
+
+</body>
+</html>
