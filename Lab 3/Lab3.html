@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Query Mr. Rudwick's Sweet Server</title>
+  <title>Query Steven's Sweet Server</title>
   <script type = "text/javascript">
     window.onload=function(){
       console.log(document.getElementById("sendQueryButton").onclick);
@@ -10,7 +10,7 @@
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function(){
         if(this.readyState == 4&&this.status==200){
-          console.log("hello")
+          console.log("recieved")
         }
       }
       xhttp.open("GET", "https://tmrudwick-web.herokuapp.com/SearchQuery/search.php?query=thlet",true);
