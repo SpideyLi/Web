@@ -1,6 +1,13 @@
 <html>
 <head>
+
   <title>Query Steven's Sweet Server</title>
+  <style type="text/css">
+  body{
+    background-color: #A2E4FA;
+  }
+  </style>
+
   <script type = "text/javascript">
     window.onload=function(){
       console.log(document.getElementById("sendQueryButton").onclick);
@@ -18,9 +25,12 @@
     }
     </script>
 </head>
-<body>
+<center><body>
+  Steven's Search Engine
+  <br>
+  <br>
   <input id = "queryInput">
-  <button id= "sendQueryButton"> Send AJAX Request </button>
+  <center> <button id= "sendQueryButton"> Send AJAX Request  </button></center>
   <div id="outputDiv"></div>
-</body>
+</body></center>
 </html>

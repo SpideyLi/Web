@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>Using Regular Expressions on PHP</title>
+	<link rel="stylesheet" href="../mdl/material.min.css">
+	<link rel="stylesheet" type="text/css" href="./form.css">
+	<script src="../mdl/material.min.js"></script>
+
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.indigo-pink.min.css">
+	<script type="text/javascript">
+		function calculate(){
+var first=document.getElementById('sample1').value;
+
+if(first=='')
+{
+	first='chris';
+}
+var num=document.getElementById('num').value;
+if(num==''){
+	num='chris';
+}
+
+var ajax= new XMLHttpRequest();
+
+ajax.onreadystatechange=function(){
+
+document.getElementById('product').innerHTML=ajax.responseText;
+
+}
+
+ajax.open("GET", "test.php?first="+first+'&num='+num);
+ajax.send();
+
+}
+
+
+	</script>
+</head>
+
+<body>
+	<br>
+	<img class = "displayed"src="scrabble.jpg" style="width:800px;height:300px;">
+	<p>If there are any issues with the tool, please email steventiger09@gmail.com!</p>
+
+<form>
+<div>
+		<br>
+
+
+		<div class="mdl-textfield mdl-js-textfield">
+   			 <input class="mdl-textfield__input" type="text" id="sample1" pattern="[a-z]+" name="FirstName">
+   			 <span class="mdl-textfield__error">Input is not a letter!</span>
+ 	 </div><br>
+ 	<br>
+
+
+ 	 <div class="mdl-textfield mdl-js-textfield">
+   			 <input class="mdl-textfield__input" type="text" id="num" pattern="[1-9]+" name="LastName">
+   			 <span class="mdl-textfield__error">Input is not a number greater than 0!</span>
+ 	 </div><br>
+ 	 <br>
+ 	 <input type="button" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Submit' onclick='calculate()'>
+       <br>
+       <br>
+       <div id = "product"></div>
+
+<br>
+<br>
+</div>
+</form>
+
+</body>
+</html>
